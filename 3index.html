@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 3 ЛР 12</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="4index.html" target="_blank"> Задание 4</a>
+    <H1 >Задание 3 </H1>
+    <ul id="itemList">
+        <li>Новый</li>
+        <li>Новый</li>
+        <li>Новый</li>
+    </ul>
+    <button id="addButton">Добавить элемент</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const itemList = document.getElementById('itemList');
+    const addButton = document.getElementById('addButton');
+
+    // Функция для добавления нового элемента
+    function addItem() {
+        const newItem = document.createElement('li');
+        newItem.textContent = 'Новый';
+        newItem.addEventListener('click', toggleItemState);
+        itemList.appendChild(newItem);
+    }
+
+    // Функция для смены состояний элемента списка
+    function toggleItemState(event) {
+        const item = event.target;
+        if (item.textContent === 'Новый') {
+            item.textContent = 'Старый';
+        } else if (item.textContent === 'Старый') {
+            item.textContent = 'Очень старый';
+        } else if (item.textContent === 'Очень старый') {
+            item.remove(); // Удаление элемента из списка
+        }
+    }
+
+    // Добавление обработчика событий для каждого элемента списка
+    Array.from(itemList.children).forEach(item => {
+        item.addEventListener('click', toggleItemState);
+    });
+
+    // Обработчик события для кнопки добавления
+        addButton.addEventListener('click', addItem);
+    });
+    </script>
+
+</body>
+</html>

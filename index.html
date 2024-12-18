@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1 ЛР 12</title>
+</head>
+<body>
+    <a href="2index.html" target="_blank">Задание 2</a>
+    <H1 >Задание 1 </H1>
+    <h1>Enter Items</h1>
+    <input type="text" id="inputField" placeholder="Enter something">
+    <button id="addButton">Add to list</button>
+
+    <ul id="itemList"></ul>
+
+    <script>
+        let items = [];
+
+        const inputField = document.getElementById('inputField');
+        const addButton = document.getElementById('addButton');
+        const itemList = document.getElementById('itemList');
+
+        function updateList() {
+            itemList.innerHTML = '';
+
+            items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                itemList.appendChild(listItem);
+            });
+        }
+
+        addButton.addEventListener('click', () => {
+            const inputValue = inputField.value.trim();
+
+            // Проверка на пустую строку
+            if (inputValue !== '') {
+                items.push(inputValue); // Добавляем элемент в массив
+                updateList(); // Обновляем отображение списка
+                inputField.value = ''; // Очищаем поле ввода
+            } else {
+                alert('Строка пустая!'); // Предупреждаем пользователя
+            }
+        });
+    </script>
+
+    
+</body>
+</html>

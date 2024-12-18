@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2 ЛР 12</title>
+    <style>
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <a href="3index.html" target="_blank">Задание 3</a>
+    <H1 >Задание 2 </H1>
+    
+    <button class="interactiveButton">Не наведен</button>
+    <button class="interactiveButton">Не наведен</button>
+    <button class="interactiveButton">Не наведен</button>
+
+    <script>
+        // Функция для изменения текста при наведении
+        function handleMouseOver() {
+            this.textContent = 'Наведен';
+        }
+
+        // Функция для изменения текста при уходе курсора
+        function handleMouseOut() {
+            this.textContent = 'Не наведен';
+        }
+
+        // Функция для изменения цвета текста на случайный при нажатии
+        function handleClick() {
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            this.style.color = randomColor;
+        }
+
+        // Получаем все кнопки с классом interactiveButton
+        const buttons = document.querySelectorAll('.interactiveButton');
+
+        // Назначаем обработчики событий для каждой кнопки
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', handleMouseOver);
+            button.addEventListener('mouseout', handleMouseOut);
+            button.addEventListener('click', handleClick);
+        });
+    </script>
+
+</body>
+</html>
